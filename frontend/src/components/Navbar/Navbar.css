@@ -1,0 +1,157 @@
+.searchArea {
+  background: whitesmoke;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border: 1px solid blueviolet;
+  position: absolute;
+  z-index: 12;
+  width: 25%;
+  right: 0;
+  padding: 12px;
+}
+
+.searchFont {
+  color: black;
+  font-size: 14px;
+}
+.menu-icon {
+  display: none;
+  cursor: pointer;
+  color: #225d8d;
+  height: 31px;
+  width: 85px;
+  font-size: 25px;
+}
+.nav-links {
+display: flex;
+justify-content: space-around;
+list-style: none;
+margin-top: 14px;
+width: 50%;
+}
+.logo {
+margin-left: -13px;
+height: 74px;
+width: 164px;
+}
+.links {
+font-size: 20px;
+font-family: sans-serif;
+color: #000;
+}
+
+.ul {
+margin: 0 auto;
+width: 35%;
+}
+.drop-menu {
+display: none;
+position: absolute;
+background-color: #fff;
+top: 100%;
+left: -47px;
+
+
+}
+
+.drop-link:hover+.drop-menu {
+display: block;
+
+}
+
+.drop-menu:hover {
+display: block;
+
+}
+
+.drop-menu-2 {
+display: none;
+position: absolute;
+background-color: #fff;
+top: 67%;
+left: 124px;
+
+
+}
+
+.drop-link:hover+.drop-menu-2 {
+display: block;
+
+}
+
+.drop-menu-2:hover {
+display: block;
+
+}
+
+.drop-menu li {
+list-style: none;
+}
+
+.search-bar{
+  margin-left: 63px;
+}
+@media (max-width: 1200px) {
+
+.links {
+  font-size: 13px;
+}
+}
+@media (max-width:991px) {
+  .searchArea{
+      width: 100%;
+  }
+  .search-bar{
+      margin-left: 0px;
+  }
+      .nav-links {
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+      }
+    
+      .menu-icon {
+        display: block;
+        margin-left: 12px;
+      
+    }
+    .logo {
+      margin-left: 1px;
+      height: 53px;
+      width: 119px;
+      margin-top: -4px;
+  }
+    
+      .show-nav {
+        display: flex;
+        position: absolute;
+        background: #f3f3f4;
+        top: 70px;
+        left: 0;
+    }
+   
+}
+
+@media (max-width: 478px) {
+
+.search-bar {
+  margin-left: 19px;
+  width: 367px;
+  height: 33px;
+}
+.menu-icon {
+display: block;
+margin-top: -39px;
+margin-left: 34px;
+}
+
+.show-nav {
+  display: flex;
+  position: absolute;
+  background: #f3f3f4;
+  top: 100px;
+  left: 0;
+}
+
+
+}

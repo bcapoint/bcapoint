@@ -1,0 +1,98 @@
+.login{
+    background-color: hsl(219,48%,8%);
+    /* background-color: #fff; */
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+}
+
+.loginContainer{
+    width: 50%;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    /* background-color: hsl(250,100%,75%); */
+    box-shadow: 0 0 10px rgba(0,0,0,.336);
+}
+
+.loginForm{
+    background-color: inherit;
+    height: 70vh;
+    border-radius: 5px;
+    padding: 2vmax;
+}
+.loginForm > h4{
+    margin: 2vmax;
+    letter-spacing: 15px;
+    display: flex;
+    animation: contactFormInputs 1s ease-in-out forwards;
+    justify-content: center;
+}
+
+.loginForm > h4 > p{
+    transition: all .5s;
+    cursor: default;
+}
+
+.loginForm > h4 > p:hover{
+    transform: translateY(-10px);
+}
+
+.loginForm > div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 2vmax 8vmax;
+}
+
+.loginForm > div > input {
+    padding: 1vmax 2vmax;
+    margin: 1vmax;
+    border:1px solid rgba(0,0,0,.192);
+    /* transform: translateX(-100vw); */
+    animation: contactFormInputs 1s ease-in-out forwards;
+    border-radius: 30px;
+    font: 100 1rem "Roboto";
+    outline: none;
+}
+
+.loginForm > div > .sbm{
+    padding: 1vmax 2vmax;
+    margin: 1vmax;
+    /* transform: translateY(-100vh); */
+    animation: contactFormInputs 1s ease-in-out forwards 1s;
+    border-radius: 30px;
+    background-color: hsl(250,100%,75%);
+    color:white;
+    transition: all .5s;
+}
+
+.loginForm > div > .sbm:hover{
+    background-color: hsl(219,48%,8%);
+}
+
+@media screen and (max-width:600px) {
+
+    .loginContainer{
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .loginForm{
+        border: 0;
+    }
+    .loginForm > div {
+        padding: 4vw 8vw;
+    }
+    .loginForm > div > input{
+        padding: 3vw 6vw;
+        margin: 2vw;
+    }
+
+    .loginForm > div > .sbm {
+        padding: 3vw 6vw;
+        margin: 2vw;
+    }
+}

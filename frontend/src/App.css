@@ -1,0 +1,310 @@
+
+.bg {
+  background-color: transparent;
+  position: sticky;
+  z-index: 2;
+}
+
+
+
+
+
+.home {
+  margin-top: 20px;
+  height: 605px;
+  border-radius: 33px;
+  border-bottom-right-radius: 314px;
+  /* background: rgb(160,34,195); */
+  background: linear-gradient(153deg, rgba(160, 34, 195, 1) 0%, rgba(100, 45, 253, 1) 100%);
+}
+
+.heading {
+  color: #fff;
+  font-size: 80px;
+  font-weight: bold;
+  padding: 67px 0px 0 109px;
+}
+
+.sub-heading {
+  font-size: 28px;
+  text-transform: uppercase;
+  color: darkgray;
+  padding-left: 111px;
+}
+
+.sub-heading span {
+  color: yellow;
+}
+
+.button-1 {
+  border-radius: 7px;
+  margin-top: 34px;
+  margin-left: 111px;
+}
+
+.button-2 {
+  color: #fff;
+  height: 38px;
+  border-radius: 7px;
+  margin-left: 23px;
+  margin-top: 37px;
+}
+
+.home-img {
+  position: absolute;
+  top: 39px;
+  right: 52px;
+  height: 727px;
+}
+
+
+
+.heading-service {
+  font-size: 41px;
+  margin-top: 71px;
+  margin-bottom: 46px;
+}
+
+.Service-item {
+  margin-top: 36px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.style {
+  /* width: 18rem; */
+  border: none;
+  cursor:pointer;
+}
+
+.card-img {
+  height: 370px;
+  width: 327px;
+  padding: 12px;
+  margin: auto;
+}
+
+.crousal-heading {
+  font-weight: bold;
+  font-size: 54px;
+  color: aqua;
+}
+
+.crousal-para {
+  font-size: 29px;
+  font-weight: 300;
+}
+
+.carousel {
+  height: 270px;
+}
+
+.blog-elm {
+  margin-top: 74px;
+}
+
+.contact {
+  background: linear-gradient(45deg, #00dbde, #fc00ff);
+  height: 514px;
+  width: 100%;
+  margin: 125px 0;
+  background-size: cover;
+}
+
+.footre {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.form-box {
+  box-shadow: 1px 1px 9px -3px purple;
+  width: 38%;
+  padding: 45px;
+  background-color: aliceblue;
+  border-radius: 4px;
+  height: 348px;
+  margin-top: 34px;
+  margin-left: 124px;
+}
+
+.contact-loc {
+  color: #fff;
+  margin-left: 76px;
+  margin-top: 25px;
+  width: 35%;
+}
+
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  padding: 58px 0 0;
+  /* Height of navbar */
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+  width: 240px;
+  z-index: 600;
+}
+
+.sidebar .active {
+  border-radius: 5px;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  /* Scrollable contents if viewport is shorter than content. */
+}
+.padding{
+  padding: 0 24px;
+}
+
+
+@media (max-width: 1200px) {
+
+  .links {
+    font-size: 13px;
+  }
+
+  .home {
+    height: 562px;
+    border-bottom-right-radius: 264px;
+  }
+
+  .home-img {
+    top: 59px;
+    right: -10px;
+    height: 648px;
+  }
+  .card-imgs {
+    height: 355px;
+    width: 298px;
+  }
+}
+
+@media (max-width: 992px) {
+
+  .home-img {
+    display: none;
+  }
+
+
+  .form-box {
+
+    margin-left: 0px;
+  }
+
+  .card-imgs {
+    height: 288px;
+    width: 244px;
+  }
+  .Service-item {
+    margin: 11px auto;
+    width: 50%;
+}
+
+}
+
+@media (max-width: 768px) {
+
+  .form-box {
+    width: 98%;
+    padding: 33px;
+    height: 364px;
+  }
+
+  .primary {
+    color: #fff;
+  }
+  
+  .heading {
+    font-size: 63px;
+    padding: 53px 0px 0 72px;
+  }
+  .sub-heading {
+    font-size: 21px;
+    padding-left: 73px;
+  }
+  .button-1 {
+    margin-left: 58px;
+}
+
+  .Service-item {
+    margin: 11px auto;
+    width: 100%;
+  }
+
+
+  .style {
+    /* width: 18rem; */
+    border: none;
+  }
+  .contact-loc {
+    margin-left: 0px;
+    width: 100%;
+  }
+
+  .contact {
+    height: 966px;
+
+  }
+}
+
+
+@media (max-width: 576px) {
+
+ 
+  .heading {
+    font-size: 47px;
+    padding: 28px 0px 0 35px;
+  }
+
+  .card-imgs {
+    height: 14rem;
+    width: 11rem;
+  }
+
+  .padding {
+    padding: 0;
+  }
+  
+.heading-service {
+  font-size: 31px;
+  margin-top: 71px;
+  margin-bottom: 46px;
+}
+
+  .home {
+
+    border-radius: 0;
+    border-top-right-radius: 83px;
+    border-bottom-left-radius: 83px;
+    height: 436px;
+    margin-top: 0;
+  }
+
+  .sub-heading {
+    font-size: 15px;
+    padding-left: 38px;
+  }
+
+  .btns {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .button-1 {
+    margin-left: 35px;
+  }
+
+  .button-2 {
+    margin-left: 35px;
+    margin-top: 34px;
+  }
+
+}
