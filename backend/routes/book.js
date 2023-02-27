@@ -10,7 +10,7 @@ const Storage = multer.diskStorage({
         cb(null,'public')
     },
     filename:(req,file,cb)=>{
-        cb(null,Date.now()+ '-' + file.originalname);
+        cb(null,file.originalname);
     } 
 });
 
@@ -32,11 +32,7 @@ router.post('/',  (req,res)=>{
         }
         else{
             const newBook =  new Book({
-                title:req.body.title,
-                file:{
-                    data:(req.file)?fs.readFileSync(req.file.path):null,
-                    contentType:(req.file)?req.file.mimetype:''
-                },
+                title:req.file.originalname,
                 description:req.body.description,
                 thumbnail:req.body.thumbnail,
                 link:req.body.link,
@@ -44,9 +40,6 @@ router.post('/',  (req,res)=>{
                 bookType:req.body.bookType
             })
             newBook.save().then(()=>res.send('succesfully uploaded')).catch((err)=>console.log(err))
-       
-        // console.log(req.files.file[0].path)
-        // console.log(req.files.thumbnail[0].path)
     }
     })
 })
@@ -70,7 +63,27 @@ router.get('/',async (req,res)=>{
     } catch (error) {
         res.status(500).json(error);
     }
-})
+});
+
+//delete by id
+router.delete("/:id", async (req, res) => {
+    try {
+        const book = await Book.findById(req.params.id);
+        try {
+            await book.delete();
+            res.status(200).json("Book Has been Deleted!");
+
+        } catch (error) {
+            res.status(500).json(error);
+        }
+
+
+    } catch (error) {
+        res.status(500).json(error);
+    }
+
+});
+
 
 
 

@@ -5,7 +5,6 @@ import { RotatingLines } from 'react-loader-spinner'
 
 const UploadBook = () => {
 
-    const [title, setTitle] = useState('');
     const [file,setFile] = useState(null);
     const [des,setDes] = useState('');
     const [url,setUrl] = useState('');
@@ -24,14 +23,13 @@ const UploadBook = () => {
         const data = new FormData();
         file && data.append('file',file,file.name);
         data.append('thumbnail',thum);
-        data.append('title',title);
         data.append('description',des);
         data.append('link',url);
         data.append('isDownloadable',isDown);
         data.append('bookType',book);
 
         
-        axios.post("https://api.bcapoints.in/api/book", data)
+        axios.post("http://api.bcapoints.in/api/book", data)
           .then(res => {
             toast.success("New Note Created 😎 Hurrehh! ")
           }).catch(err => console.log('err:yE',err));
@@ -42,8 +40,6 @@ const UploadBook = () => {
   return (
     <div className='container'>
         <br/><br/><br/>
-        
-        <input value={title} onChange={(e)=>setTitle(e.target.value)} type={'text'} placeholder='title...' /><br/><br/>
         <input onChange={(e)=>setThum(e.target.value)} type={'url'}  placeholder='URL...'/><br/><br/>
         <input type={'file'} onChange={onInputChange} /><br/><br/>
         <textarea onChange={(e)=>setDes(e.target.value)} placeholder='description' rows={'5'} cols={'60'} /><br/><br/>

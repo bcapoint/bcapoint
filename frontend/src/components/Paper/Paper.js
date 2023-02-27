@@ -1,9 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { saveAs } from 'file-saver';
 import './Paper.css'
-import { AiOutlineCloudDownload } from 'react-icons/ai'
-import { ImCancelCircle } from 'react-icons/im'
+import { AiFillCloseCircle } from 'react-icons/ai'
 import Img from './paper.png'
 import { RotatingLines } from 'react-loader-spinner'
 
@@ -12,15 +10,10 @@ const Paper = () => {
     const [sem, setSem] = useState(0);
     const [sub, setSub] = useState('0');
     const [data, setData] = useState([]);
-    const [newData, setNewData] = useState([]);
-    const [contentType, setContentType] = useState('');
-    const [originalName, setOriginalName] = useState('');
-    const [urls, setUrls] = useState('');
-    const [load, setLoad] = useState(false);
-
+    const [link,setLink] = useState('0');
     const fetchData = () => {
         return (
-            axios.get(`https://api.bcapoints.in/upload`).then((response) => setData(response.data))
+            axios.get(`http://api.bcapoints.in/upload`).then((response) => setData(response.data))
         )
     }
 
@@ -28,26 +21,12 @@ const Paper = () => {
         fetchData();
     }, [])
 
-    const download = async (id) => {
-        setLoad(true);
-        const res = await axios.get(`https://api.bcapoints.in/single/${id}`);
-        setNewData(res.data.image.data.data);
-        setContentType(res.data.image.contentType);
-        setOriginalName(res.data.name)
-        setLoad(false);
+    const download = async (name) => {
+        setLink(`http://api.bcapoints.in/public/${name}`);
     }
-
-    const downloadPdf = (filename, contentType) => {
-        const file = new Blob([new Uint8Array(newData)], { type: contentType });
-        const url = URL.createObjectURL(file);
-        setUrls(url);
-        saveAs(file, filename);
-        setContentType('')
-    };
 
     return (
         <div className='container QCon'>
-
             <div className='App'>
                 <section className="paper-home container"  >
 
@@ -126,15 +105,6 @@ const Paper = () => {
                         <option value="Web Development Tools & Techniques">Web Development Tools & Techniques</option>
                     </select>}
             </div>
-            {load && <div className='btn-load'><RotatingLines
-                    height="40"
-                    width="40"
-                    radius="9"
-                    color="red"
-                    ariaLabel="loading"
-                    wrapperStyle
-                    wrapperClass
-                /><p>Genrating Link...</p></div>}
             {sub !== '0' && <div className="three">
                 <h1>{sub}</h1>
             </div>}
@@ -151,10 +121,10 @@ const Paper = () => {
                     wrapperStyle
                     wrapperClass
                 /><p>Fetching Data,Please wait...</p></div>}
-               
-                {sub !== '0' && data.map(item => item.sub === sub && <div className='container QuestionC' key={item._id}> <h3 onClick={() => download(`${item._id}`)}>{item.name}</h3></div>)}
-                {sub === '0' && data.map(item => <div className='container QuestionC' key={item._id}> <h3 onClick={() => download(`${item._id}`)}>{item.name}</h3></div>)}
-                {contentType !== '' && <div className='dwlQP'><h2>{originalName}</h2><span className='cancleBtn' onClick={() => setContentType('')}><ImCancelCircle /></span> <button className="btn btn-primary px-5 py-2 QnBtn" onClick={() => downloadPdf(originalName, contentType)}><AiOutlineCloudDownload />Download</button></div>}
+                {link !=='0' && <div className='iframe'><h1 onClick={()=>setLink('0')} className='closeBtn'><AiFillCloseCircle /></h1><iframe  src={link} title={"Question Paper by BcaPooint-Team"} ></iframe></div>}
+
+                {sub !== '0' && data.map(item => item.sub === sub && <div className='container QuestionC' key={item._id}> <h3 onClick={() => download(`${item.name}`)}>{item.name}</h3></div>)}
+                {sub === '0' && data.map(item => <div className='container QuestionC' key={item._id}> <h3 onClick={() => download(`${item.name}`)}>{item.name}</h3></div>)}
                 
             </div>
 

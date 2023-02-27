@@ -1,4 +1,4 @@
-const  express = require('express')
+const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
 const port = 8000
@@ -18,76 +18,88 @@ const fs = require('fs');
 
 dotenv.config();
 app.use(express.json());
-app.use('/public',express.static('public'));
-app.use(cors())
+app.use('/public', express.static('public'));
+app.use(cors());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 
-mongoose.connect(`${process.env.MONGO_URL}`,{
-    useNewUrlParser:true,
-    useUnifiedTopology:true
+mongoose.connect(`${process.env.MONGO_URL}`, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 })
-.then(console.log("connected to DB"))
-.catch(error => console.log(error));
+    .then(console.log("connected to DB"))
+    .catch(error => console.log(error));
 
-app.use("/api/auth",authRoute);
-app.use("/api/users",userRoute);
-app.use("/api/posts",postRoute);
-app.use("/api/book",bookRoute);
-app.use("/api/customer",custRoute);
+app.use("/api/auth", authRoute);
+app.use("/api/users", userRoute);
+app.use("/api/posts", postRoute);
+app.use("/api/book", bookRoute);
+app.use("/api/customer", custRoute);
 
 
 //storage
 const Storage = multer.diskStorage({
-    destination:(req,file,cb) => {
-        cb(null,'public')
+    destination: (req, file, cb) => {
+        cb(null, 'public')
     },
-    filename:(req,file,cb)=>{
-        cb(null,Date.now() + '-' + file.originalname);
-    } 
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
+    }
 });
 
 const upload = multer({
-    storage:Storage
+    storage: Storage
 }).single('file');
 
 //post
-app.post('/upload',(req,res)=>{
-    upload(req,res,(err)=>{
-        if(err){
-            return res.status(500).json("pahle hi"+err)
+app.post('/upload', (req, res) => {
+    upload(req, res, (err) => {
+        if (err) {
+            return res.status(500).json("pahle hi" + err)
         }
-        // return res.status(200).send(req.file);
-        else{
+        else {
             const newPdf = new pdfModel({
-                name:req.body.name,
-                image:{
-                    data:req.file ? fs.readFileSync(req.file.path) : null,
-                    contentType:req.file ? req.file.mimetype : null
-                },
-                sem:req.body.sem,
-                sub:req.body.sub
+                name: req.file.originalname,
+                sem: req.body.sem,
+                sub: req.body.sub
             })
-            newPdf.save().then(()=>res.send('succesfully uploaded')).catch((err)=>console.log("save karte time" + err))
+            newPdf.save().then(() => res.send('succesfully uploaded')).catch((err) => console.log("save karte time" + err))
         }
     })
 })
 
 //get
-app.get('/upload', async (req,res)=>{
+app.get('/upload', async (req, res) => {
     try {
-        // let pdf = await pdfModel.find();
-        let pdf = await pdfModel.find().sort({_id:-1}).exec(function(err,docs) {
+        let pdf = await pdfModel.find().sort({ _id: -1 }).exec(function (err, docs) {
             res.status(200).json(docs)
         })
-        // res.status(200).json(pdf)
     } catch (error) {
         res.status(500).send(error)
     }
 })
 
+//delete by id
+app.delete("/upload/:id", async (req, res) => {
+    try {
+        const pdf = await pdfModel.findById(req.params.id);
+        try {
+            await pdf.delete();
+            res.status(200).json("pdf Has been Deleted!");
+
+        } catch (error) {
+            res.status(500).json(error);
+        }
+
+
+    } catch (error) {
+        res.status(500).json(error);
+    }
+
+});
+
 //get by title
-app.get('/single/:id',async (req,res)=>{
+app.get('/single/:id', async (req, res) => {
     let pdf = await pdfModel.findById(req.params.id);
     res.status(200).json(pdf);
 })

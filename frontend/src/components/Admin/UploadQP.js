@@ -14,21 +14,19 @@ const Paper = () => {
 
     const [sem, setSem] = useState(0);
     const [sub, setSub] = useState('0');
-    const [title, setTitle] = useState('');
     const [load, setLoad] = useState(false);
     const upload = () => {
         setLoad(true);
         const data = new FormData();
         file && data.append('file',file,file.name);
-        data.append('name',title);
         data.append('sem',sem);
         data.append('sub',sub);
 
 
-        axios.post("https://api.bcapoints.in/upload", data)
+        axios.post("http://api.bcapoints.in/upload", data)
           .then(res => {
             toast.success("Question Paper Uploaded! ")
-          }).catch(err => console.log('err:yE',err));
+          }).catch(err => console.log('error catch',err));
           setLoad(false)
       }
     
@@ -45,8 +43,7 @@ const Paper = () => {
                     wrapperStyle
                     wrapperClass
                 /><p>Uploading...</p></div>}
-                <input className='my-2 px-4 py-1 font-size-5' type={'text'} placeholder='Title ..' value={title} onChange={(e) => setTitle(e.target.value)} /><br />
-                <select className='my-2 px-4 py-1 font-size-5' onChange={(e) => { setSem(e.target.value) }}>
+                  <select className='my-2 px-4 py-1 font-size-5' onChange={(e) => { setSem(e.target.value) }}>
                     <option value="0">Select Semester:</option>
                     <option value="1 semester">1 Semester</option>
                     <option value="2 semester">2 Semester </option>
@@ -54,7 +51,6 @@ const Paper = () => {
                     <option value="4 semester">4 Semester </option>
                     <option value="5 semester">5 Semester </option>
                     <option value="6 semester">6 Semester </option>
-                    <option value="blog">Blog</option>
                 </select>
                 {
                     sem === "1 semester" &&

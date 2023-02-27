@@ -126,6 +126,19 @@
   margin-left: 124px;
 }
 
+.thankHeading{
+  font-size:60px;
+}
+
+.confirmIcon{
+  font-size:60px;
+  
+}
+.thankPara{
+  font-size: large;
+  padding: 30px 0;
+  letter-spacing: 1.2px;
+}
 .contact-loc {
   color: #fff;
   margin-left: 76px;

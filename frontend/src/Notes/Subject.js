@@ -18,7 +18,7 @@ function Subject() {
     useEffect(() => {
         const fetchData = () => {
             return (
-                axios.get(`https://api.bcapoints.in/api/posts`).then((response) => setData(response.data))
+                axios.get(`http://api.bcapoints.in/api/posts`).then((response) => setData(response.data))
             )
         }
         fetchData();

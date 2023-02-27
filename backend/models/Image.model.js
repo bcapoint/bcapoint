@@ -5,10 +5,6 @@ const pdfSchema = mongoose.Schema({
         type:String,
         required:true
     },
-    image:{
-        data:Buffer,
-        contentType:String
-    },
     sem:{
         type:String,
         required:true
