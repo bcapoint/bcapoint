@@ -13,7 +13,7 @@ const Paper = () => {
     const [link,setLink] = useState('0');
     const fetchData = () => {
         return (
-            axios.get(`http://api.bcapoints.in/upload`).then((response) => setData(response.data))
+            axios.get(`https://api.bcapoints.in/upload`).then((response) => setData(response.data))
         )
     }
 
@@ -22,7 +22,7 @@ const Paper = () => {
     }, [])
 
     const download = async (name) => {
-        setLink(`http://api.bcapoints.in/public/${name}`);
+        setLink(`https://api.bcapoints.in/public/${name}`);
     }
 
     return (

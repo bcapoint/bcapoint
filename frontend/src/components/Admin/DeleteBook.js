@@ -11,13 +11,13 @@ const DeleteBook = () => {
     const navigate = useNavigate()
     const fetchData = () => {
         return (
-            axios.get("http://api.bcapoints.in/api/book").then((response) => setData(response.data))
+            axios.get("https://api.bcapoints.in/api/book").then((response) => setData(response.data))
         )
     }
 
     const deleteData = (id) => {
         const yes = window.confirm("Do You Really Want to Delete?");
-        yes && axios.delete(`http://api.bcapoints.in/api/book/${id}`).then(() => alert("deleted Successfully"))
+        yes && axios.delete(`https://api.bcapoints.in/api/book/${id}`).then(() => alert("deleted Successfully"))
     }
 
     useEffect(() => {

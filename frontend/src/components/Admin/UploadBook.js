@@ -29,7 +29,7 @@ const UploadBook = () => {
         data.append('bookType',book);
 
         
-        axios.post("http://api.bcapoints.in/api/book", data)
+        axios.post("https://api.bcapoints.in/api/book", data)
           .then(res => {
             toast.success("New Note Created 😎 Hurrehh! ")
           }).catch(err => console.log('err:yE',err));

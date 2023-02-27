@@ -19,7 +19,7 @@ function Books() {
     const [link,setLink] = useState('0');
     const fetchData = () => {
         return (
-            axios.get(`http://api.bcapoints.in/api/book`).then((response) => setData(response.data))
+            axios.get(`https://api.bcapoints.in/api/book`).then((response) => setData(response.data))
         )
     }
 
@@ -33,7 +33,7 @@ function Books() {
     }
 
     const download = async (name) => {
-        setLink(`http://api.bcapoints.in/public/${name}`);
+        setLink(`https://api.bcapoints.in/public/${name}`);
     }
 
     const handleClick = () => {
