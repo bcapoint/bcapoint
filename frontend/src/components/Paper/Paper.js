@@ -18,6 +18,10 @@ const Paper = () => {
     }
 
     useEffect(() => {
+        window.scrollTo({
+            top: 400,
+            behavior: "smooth"
+          });
         fetchData();
     }, [])
 
@@ -28,7 +32,7 @@ const Paper = () => {
     return (
         <div className='container QCon'>
             <div className='App'>
-                <section className="paper-home container"  >
+                <section className="paper-home "  >
 
                     <div className="row ">
 
@@ -38,7 +42,7 @@ const Paper = () => {
                         </div>
 
                         <div className=' col-md-4 display-resp'>
-                            <img className='paper-img' src={Img} alt='banner-img' />
+                            <img className='paper-img img-fluid' src={Img} alt='banner-img' />
                         </div>
                     </div>
                 </section>

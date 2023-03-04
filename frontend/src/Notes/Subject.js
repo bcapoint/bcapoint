@@ -16,6 +16,10 @@ function Subject() {
     const [toggle, setToggle] = useState(false);
     const [navStyle, setNavStyle] = useState('sideContainer')
     useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+          });
         const fetchData = () => {
             return (
                 axios.get(`https://api.bcapoints.in/api/posts`).then((response) => setData(response.data))

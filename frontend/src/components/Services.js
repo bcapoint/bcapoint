@@ -1,4 +1,3 @@
-import React from 'react'
 import subNotes from './Sub-notes.png'
 import QuesPaper from './ques.webp'
 import blog from './bog.jpg'

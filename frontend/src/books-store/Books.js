@@ -16,7 +16,7 @@ function Books() {
     const [data, setData] = useState([]);
     const [filter, setFilter] = useState([])
 
-    const [link,setLink] = useState('0');
+    const [link, setLink] = useState('0');
     const fetchData = () => {
         return (
             axios.get(`https://api.bcapoints.in/api/book`).then((response) => setData(response.data))
@@ -24,6 +24,10 @@ function Books() {
     }
 
     useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
         fetchData();
     }, [])
 
@@ -32,8 +36,8 @@ function Books() {
         setFilter(updateList);
     }
 
-    const download = async (name) => {
-        setLink(`https://api.bcapoints.in/public/${name}`);
+    const download = async (link) => {
+        setLink(`${link}`);
     }
 
     const handleClick = () => {
@@ -48,11 +52,10 @@ function Books() {
     return (
 
         <div >
-            {/* {console.log( )} */}
             {/* // home section starts    */}
-
             <section className="book-home container"  >
-            {link !=='0' && <div className='iframe'><h1 onClick={()=>setLink('0')} className='closeBtn'><AiFillCloseCircle /></h1><iframe  src={link} title={"Question Paper by BcaPooint-Team"} ></iframe></div>}
+                {link !== '0' && <div className='iframe'><h1 onClick={() => setLink('0')} className='closeBtn'><AiFillCloseCircle /></h1><iframe src={link} title={"Question Paper by BcaPooint-Team"} ></iframe></div>}
+
                 <div className="row ">
 
                     <div className="content col-md-6">
@@ -64,7 +67,7 @@ function Books() {
 
                     <div className=' col-md-4 display-resp'>
                         <div className=' books-slider  book-slid-sow '>
-                            {data.map(item => !(item.isDownloadable) && <a key={item._id} href={item.link}  className="swiper-slide"><img src={item.thumbnail} alt="" /></a>)}
+                            {data.map(item => !(item.isDownloadable) && <a key={item._id} href={item.link} className="swiper-slide"><img src={item.thumbnail} alt="" /></a>)}
                         </div>
                         <img src={stand} className="stand" alt="" />
                     </div>
@@ -94,16 +97,16 @@ function Books() {
                             wrapperStyle
                             wrapperClass
                         /><p>Fetching Data,Please wait...</p></div>}
-                       
+
                         {(filter.length === 0) && data.map(item =>
                             <div className=" col" key={item._id}>
-                                <div className="product card h-100 shadow-sm"> 
-                                {item.isDownloadable && <span class="new">Free</span>}<img src={item.thumbnail} className="card-img-top" alt="..." />
+                                <div className="product card h-100 shadow-sm">
+                                    {item.isDownloadable && <span className="new">Free</span>}<img src={item.thumbnail} className="card-img-top" alt="..." />
                                     <div className="card-body">
                                         <div className="clearfix ">
                                             <h5 className=" fw-bold">{item.title}</h5>
-                                            <p className="card-title"> <ShowMore text={item.description} /> </p>
-                                            <div className="text-center "> {item.isDownloadable ? <button className='btn btn-success ' onClick={() => download(`${item.title}`)}>Download</button> : <a href={item.link} className="btn btn-primary">Buy Now</a>} </div>
+                                            <span className="card-title"> <ShowMore text={item.description} /> </span>
+                                            <div className="text-center "> {item.isDownloadable ? <button className='btn btn-success ' onClick={() => download(`${item.link}`)}>Download</button> : <a href={item.link} className="btn btn-primary">Buy Now</a>} </div>
                                         </div>
                                     </div>
                                 </div>
@@ -113,14 +116,14 @@ function Books() {
                         {filter.map(item =>
 
                             <div className="col " key={item._id}>
-                                    
-                                   
-                                <div className="card product h-100 shadow-sm"> {item.isDownloadable && <span class="new">Free</span>} <img src={item.thumbnail} className="card-img-top" alt="..." />
+
+
+                                <div className="card product h-100 shadow-sm"> {item.isDownloadable && <span className="new">Free</span>} <img src={item.thumbnail} className="card-img-top" alt="..." />
                                     <div className="card-body">
                                         <div className="clearfix ">
                                             <h5 className=" fw-bold">{item.title}</h5>
                                             <p className="card-title"> <ShowMore text={item.description} /> </p>
-                                            <div className="text-center "> {item.isDownloadable ? <button className='btn btn-success ' onClick={() => download(`${item.title}`)}>Download</button> : <a href={item.link} className="btn btn-primary">Buy Now</a>} </div>
+                                            <div className="text-center "> {item.isDownloadable ? <button className='btn btn-success ' onClick={() => download(`${item.link}`)}>Download</button> : <a href={item.link} className="btn btn-primary">Buy Now</a>} </div>
                                         </div>
                                     </div>
                                 </div>

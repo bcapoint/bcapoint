@@ -29,7 +29,7 @@ const UpdateData = () => {
         if (!token) {
             navigate('/login');
         }
-    }, [sub]);
+    }, [navigate]);
 
     return (
         <div className='container'>

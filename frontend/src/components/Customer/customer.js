@@ -23,7 +23,7 @@ const Customer = () => {
         if (!token) {
           navigate('/login');
         }
-      }, []);
+      }, [navigate]);
 
 
     return (

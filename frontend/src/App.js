@@ -23,7 +23,10 @@ import Services from './components/Services';
 import Customer from './components/Customer/customer'
 import DeleteQP from './components/Admin/DeleteQP';
 import DeleteBook from './components/Admin/DeleteBook';
-
+import FullBlog from './components/blog/FullBlog';
+import UploadBlog from './components/Admin/UploadBlog'
+import UpdateBlog from './components/Admin/UpdateBlog';
+import UpdateBlogOne from './components/Admin/UpdateBlogOne';
 
 function App() {
   
@@ -53,6 +56,10 @@ function App() {
           <Route path='userData' element={<Customer />} />
           <Route path='deleteQP' element={<DeleteQP />} />
           <Route path='deleteBook' element={<DeleteBook />} />
+          <Route path='Fullblog/:_id' element={<FullBlog />} />
+          <Route path='uploadBlog' element={<UploadBlog/>} />
+          <Route path='updateBlog' element={<UpdateBlog />} />
+          <Route path='updateBlogOne/:id' element={<UpdateBlogOne /> } />
 
 
         </Routes>

@@ -7,10 +7,6 @@ const bookSchema = new mongoose.Schema({
    },
    thumbnail:String,
    description:String,
-   // file:{
-   //    data:Buffer,
-   //    contentType:String
-   // },
    link:String,
    isDownloadable:{
     type:Boolean,

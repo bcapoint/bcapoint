@@ -24,7 +24,8 @@ const Admin = () => {
 
   return (
     <div className='container'>
-      <Link className='btn btn-primary m-3' to="/addData"><SlNote />Create Note</Link>
+      <Link className='btn btn-primary m-3' to="/addData"><SlNote />Create Note</Link> 
+      <Link className='btn btn-primary m-3' to="/uploadBlog"><SlNote />Create Blog</Link>
       <Link className='btn btn-primary m-3' to="/uploadQP"><SlNote />Upload Question Paper</Link>
       <Link className='btn btn-success m-3' to="/updateData"><BiEdit />Update Note</Link>
       <Link className='btn btn-success m-3' to="/uploadBook"><BiEdit />Upload Book</Link>
@@ -32,6 +33,7 @@ const Admin = () => {
       <Link className='btn btn-info m-3' to="/userData"><ImUsers />User Data</Link>
       <Link className='btn btn-danger m-3' to="/deleteQP"><AiFillDelete />Delete Question Paper</Link>
       <Link className='btn btn-danger m-3' to="/deleteBook"><AiFillDelete />Delete Book</Link>
+      <Link className='btn btn-success m-3' to="/updateBlog"><BiEdit />Update Blog</Link>
     </div>
   )
 }

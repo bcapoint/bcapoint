@@ -1,16 +1,14 @@
 import logo from './logo.jpeg';
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { RiAdminFill } from "react-icons/ri"
 import './Navbar.css'
 
 
 function Navbar() {
     const [search, setSearch] = useState('');
     const [data, setData] = useState([]);
-    const [stog, setStog] = useState(false)
-    const navigate = useNavigate();
+    const [stog, setStog] = useState(false);
 
     const fetchData = () => {
       return (

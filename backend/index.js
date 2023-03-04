@@ -13,6 +13,7 @@ const multer = require("multer");
 const pdfModel = require('./models/Image.model')
 var cors = require('cors')
 const fs = require('fs');
+const blogRoute = require('./routes/Blog')
 
 
 
@@ -35,6 +36,7 @@ app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/book", bookRoute);
 app.use("/api/customer", custRoute);
+app.use("/api/blog",blogRoute);
 
 
 //storage

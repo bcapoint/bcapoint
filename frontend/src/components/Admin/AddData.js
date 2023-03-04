@@ -11,7 +11,6 @@ const AdminData = () => {
   const [username, setUsername] = useState('');
   const [sem, setSem] = useState(0);
   const [sub, setSub] = useState('');
-  const [data, setData] = useState([]);
   const navigate = useNavigate()
 
   const upload = () => {
@@ -27,17 +26,11 @@ const AdminData = () => {
       }).catch(err => toast.error('Bhai pahle kuch likh to le 😒'));
   }
 
-  const fetchData = () => {
-    return (
-      axios.get("https://api.bcapoints.in/api/posts").then((response) => setData(response.data))
-    )
-  }
+ 
 
   useEffect(() => {
     let token = sessionStorage.getItem('Token')
-    if (token) {
-      fetchData();
-    }
+    
     if (!token) {
       navigate('/login');
     }
@@ -59,7 +52,6 @@ const AdminData = () => {
           <option value="4 semester">4 Semester </option>
           <option value="5 semester">5 Semester </option>
           <option value="6 semester">6 Semester </option>
-          <option value="blog">Blog</option>
         </select>
         {
           sem === "1 semester" &&

@@ -74,7 +74,6 @@ const Upate = () => {
           <option value="4 semester">4 Semester </option>
           <option value="5 semester">5 Semester </option>
           <option value="6 semester">6 Semester </option>
-          <option value="blog">Blog</option>
         </select>
         {
           sem === "1 semester" &&

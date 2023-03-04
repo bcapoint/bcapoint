@@ -1,47 +1,20 @@
 const router = require('express').Router();
 const fs = require('fs');
-const multer = require("multer");
 const Book = require('../models/Book');
 
 
-//storage
-const Storage = multer.diskStorage({
-    destination:(req,file,cb) => {
-        cb(null,'public')
-    },
-    filename:(req,file,cb)=>{
-        cb(null,file.originalname);
-    } 
-});
 
 
-
-const upload = multer({
-    storage:Storage
-}).single('file');
-
-// const  multiUpload = upload.fields([{name:'thumbnail'},{name:'file'}]);
 
 
 
 //post
 router.post('/',  (req,res)=>{
-    upload(req,res,(err)=>{
-        if(err){
-            return res.status(500).json(err)
-        }
-        else{
-            const newBook =  new Book({
-                title:req.file.originalname,
-                description:req.body.description,
-                thumbnail:req.body.thumbnail,
-                link:req.body.link,
-                isDownloadable:req.body.isDownloadable,
-                bookType:req.body.bookType
-            })
+       
+            const newBook =  new Book(req.body);
             newBook.save().then(()=>res.send('succesfully uploaded')).catch((err)=>console.log(err))
-    }
-    })
+    
+    
 })
 
 
